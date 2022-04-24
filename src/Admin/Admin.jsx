@@ -89,17 +89,45 @@ export default function Admin() {
   },[])
   return (
       <>
-      <Paper>
+      <Paper sx={{display:"flex"}}>
       <div className='config-env-main'>
         <p>Enter Environments Details</p>
         <div>
           <FormControl sx={{ m: 1, minWidth: 400, marginBottom:20, marginTop:10 }} variant="standard">
             <TextField sx={{ m: 1, minWidth: 400 }} id="outlined-basic" onChange={(e) => {setEnvName(e.target.value)}} label= "EnvName" variant="outlined" />
+            <InputLabel id="demo-customized-select-label">Select Organization</InputLabel>
+              <Select
+                labelId="demo-customized-select-label"
+                id="demo-customized-select"
+                label="Enter Org"
+                value={orgId}
+                onChange={handleChange}
+                input={<BootstrapInput />}
+              >
+                  {
+                      orgs.map((org) => (
+                          <MenuItem value={org.orgId}>{org.orgName}</MenuItem>
+                      ))
+                  }
+              </Select>
+              <InputLabel id="demo-multiple-name-label">Environment Type</InputLabel>
+              <Select
+                labelId="demo-multiple-name-label"
+                id="demo-multiple-name"
+                value={envType}
+                onChange = {handleEnvType}
+              >
+                <MenuItem value = {"basic"}>basic</MenuItem>
+                <MenuItem value = {"none"}>none</MenuItem>
+                <MenuItem value = {"protected"}>protected</MenuItem>
+                <MenuItem value = {"restricted"}>restricted</MenuItem>
+              </Select>
+              <Button variant="contained" onClick = {handleEnv}>Configure Environment</Button>
           </FormControl>
       </div>
       <div>
       <FormControl sx={{ m: 1, minWidth: 400 }} variant="standard">
-        <InputLabel id="demo-customized-select-label">Select Organization</InputLabel>
+        {/* <InputLabel id="demo-customized-select-label">Select Organization</InputLabel>
         <Select
           labelId="demo-customized-select-label"
           id="demo-customized-select"
@@ -113,11 +141,11 @@ export default function Admin() {
                     <MenuItem value={org.orgId}>{org.orgName}</MenuItem>
                 ))
             }
-        </Select>
+        </Select> */}
       </FormControl>
       <div>
       <FormControl sx={{ m: 1, width: 300 }}>
-        <InputLabel id="demo-multiple-name-label">Environment Type</InputLabel>
+        {/* <InputLabel id="demo-multiple-name-label">Environment Type</InputLabel>
         <Select
           labelId="demo-multiple-name-label"
           id="demo-multiple-name"
@@ -128,26 +156,29 @@ export default function Admin() {
           <MenuItem value = {"none"}>none</MenuItem>
           <MenuItem value = {"protected"}>protected</MenuItem>
           <MenuItem value = {"restricted"}>restricted</MenuItem>
-        </Select>
+        </Select> */}
       </FormControl>
     </div>
       
       </div>
       
       <div>
-          <Button variant="contained" onClick = {handleEnv}>Configure Environment</Button>
+          {/* <Button variant="contained" onClick = {handleEnv}>Configure Environment</Button> */}
       </div>
     </div>
     </Paper>
     <Paper>
         <div className='config-org-main'>
-            <p>Enter Organization Details</p>
+            {/* <p>Enter Organization Details</p> */}
             <div>
+             
               <FormControl sx={{ m: 1 }} variant="standard">
+               <p>Enter Organization Details</p>
                 <TextField sx={{ m: 1, minWidth: 500 }} id="outlined-basic" onChange={(e) => {setOrgName(e.target.value)}} label= "Organization Name" variant="outlined" />
+                <Button variant="contained" onClick = {handleOrg}>Configure Organization</Button>
               </FormControl>
           </div>
-              <Button variant="contained" onClick = {handleOrg}>Configure Organization</Button>
+              {/* <Button variant="contained" onClick = {handleOrg}>Configure Organization</Button> */}
         </div>
     </Paper>
   </>

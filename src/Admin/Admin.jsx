@@ -89,13 +89,13 @@ export default function Admin() {
   },[])
   return (
       <>
-      <Paper sx={{display:"flex"}}>
+      <Paper sx={{display:"flex", gap:"4rem"}}>
       <div className='config-env-main'>
         <p>Enter Environments Details</p>
         <div>
-          <FormControl sx={{ m: 1, minWidth: 400, marginBottom:20, marginTop:10 }} variant="standard">
+          <FormControl sx={{ m: 1, minWidth: 400, marginBottom:20, marginTop:10,display:"flex", gap:"3rem", width:"50%" }} variant="standard" >
             <TextField sx={{ m: 1, minWidth: 400 }} id="outlined-basic" onChange={(e) => {setEnvName(e.target.value)}} label= "EnvName" variant="outlined" />
-            <InputLabel id="demo-customized-select-label">Select Organization</InputLabel>
+            <InputLabel id="demo-customized-select-label" sx={{position:"relative",top:"40px"}}>Select Organization</InputLabel>
               <Select
                 labelId="demo-customized-select-label"
                 id="demo-customized-select"

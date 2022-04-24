@@ -6,35 +6,37 @@ import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import axios from 'axios';
-import "./Login.css"
 
 
-function Login(props) {
 
+function Config1(props) {
     const [userName, setUserName] = useState("");
     const [userPass, setUserPass] = useState("");
     const d = useData();
-    
-    const naviagte = useNavigate();
+    const naviagate = useNavigate();
     useEffect(async() => {
         let headers = {
             "X-ClientID" : "cee7adb8c10f421abdeef6cc08aed4d5",
             "X-ClientSecret" : "25042fa5aa474F2AA8EC770151e2E3Ad"
         }
-        let data = await axios.get("http://db-sapi.us-e2.cloudhub.io/db/api/getcredentials", {headers});
-        console.log(data);
-        
-        if(data.data.length == 0){
-            naviagte("/configauth")
+        let x = await axios.get("http://db-sapi.us-e2.cloudhub.io/db/api/getcredentials", {headers});
+        console.log(x); 
+        if(x.data.length > 0){
+            naviagate("/login")
         }
-      }, []);
-    const handleLogin = async () => {   
-        d.login(userName, userPass);
-        console.log(d.data);
-        console.log(d.userCridentails);
+    })
+    const handleLogin = async () => {
+        let headers = {
+            "X-ClientID" : "c295dcf04c59476a8ac6350146a41ec5",
+            "X-ClientSecret" : "93b75b5F69D54857915371592a797932"
+        }
+        let body = {"username" : userName, "password" : userPass};
+        let data = await axios.post("http://config-papi.us-e2.cloudhub.io/api/login", body, {headers});
+        alert(data.data.status);
     }
     return (
      <div className='login_main_container'>
+         
          <div className='login_main_container_1'>
             <Box
                 component="form"
@@ -53,10 +55,7 @@ function Login(props) {
                 </div>
                 <div>
                     <Button variant="contained" onClick={handleLogin}>Login</Button>
-                </div>
-
-
-                
+                </div>  
             </Box>
         </div>
         
@@ -64,4 +63,4 @@ function Login(props) {
     );
 }
 
-export default Login;
+export default Config1;

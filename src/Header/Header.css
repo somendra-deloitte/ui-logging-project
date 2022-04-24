@@ -1,0 +1,17 @@
+.main_container_header{
+    display: flex;
+    justify-content: left;
+
+}
+.logo_img_class{
+    height: 10vh;
+    align-self: left;
+}
+
+.any_point_text{
+    color: rgb(0,161,225);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 26vh;
+}
